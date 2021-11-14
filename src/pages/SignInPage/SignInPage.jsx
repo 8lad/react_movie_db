@@ -61,7 +61,6 @@ const SignInPage = () => {
       gender: "",
     },
     onSubmit: (values) => {
-      console.log(JSON.stringify(values));
       setIsSubmit(true);
     },
     validationSchema: schema,

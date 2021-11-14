@@ -49,6 +49,7 @@
     "axios": "^0.24.0",
     "formic": "^0.0.10",
     "formik": "^2.2.9",
+    "history": "^5.1.0",
     "react-confetti": "^6.0.1",
     "react-hook-form": "^7.18.1",
     "react-redux": "^7.2.6",

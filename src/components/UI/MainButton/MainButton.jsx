@@ -14,8 +14,8 @@ const PrimaryButton = ({ children, ...props }) => {
   return (
     <Button
       className={styles.root}
-      type="submit"
       fullWidth
+      type="submit"
       variant="contained"
       color="primary"
       {...props}
