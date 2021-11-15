@@ -38,9 +38,9 @@ const LogInPage = () => {
       userName: "",
     },
     onSubmit: () => {
-      dispatch(setIsLogged());
+      dispatch(setIsLogged(true));
+      localStorage.setItem("token", JSON.stringify(userToken));
       if (userToken.request_token) {
-        localStorage.setItem("token", JSON.stringify(userToken));
         return (window.location.href = `https://www.themoviedb.org/authenticate/${userToken.request_token}?redirect_to=${redirectProfile}`);
       }
       navigate("/userpage");

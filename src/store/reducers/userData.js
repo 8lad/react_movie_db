@@ -2,22 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { useRequestHook } from "../../customHooks/requestHook.js";
 import { usePostHook } from "../../customHooks/postHook.js";
 const initialState = {
-  userData: {
-    avatar: {
-      gravatar: {
-        hash: "351108a3e5816dea55244f046e9e1fe4",
-      },
-      tmdb: {
-        avatar_path: "/rOGEBcXB7iMVrVifDSkyKQEyxC7.png",
-      },
-    },
-    id: 11363016,
-    iso_639_1: "ru",
-    iso_3166_1: "UA",
-    name: "",
-    include_adult: false,
-    username: "_hard_worker_",
-  },
+  userData: {},
   isLogged: false,
   sessionId: {},
   userToken: {
@@ -30,9 +15,9 @@ const initialState = {
 
 export const fetchSessionId = createAsyncThunk(
   "user/fetchSessionId",
-  async function (url, body) {
+  async function (body) {
     const { postRequest } = usePostHook();
-    return await postRequest(url, body);
+    return await postRequest(body);
   }
 );
 export const fetchUserDetails = createAsyncThunk(
@@ -55,8 +40,8 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setIsLogged(state) {
-      state.isLogged = true;
+    setIsLogged(state, action) {
+      state.isLogged = action.payload;
     },
   },
   extraReducers: (builder) => {

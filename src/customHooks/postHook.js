@@ -1,14 +1,14 @@
 export const usePostHook = () => {
   const postRequest = async (
-    url,
-    body,
+    token,
+    url = "https://api.themoviedb.org/3/authentication/session/new?api_key=a9096838b82c3238417da01b26dc07aa",
     method = "POST",
     headers = { "Content-Type": "application/json" }
   ) => {
     try {
       const response = await fetch(url, {
         method,
-        body: JSON.stringify(body),
+        body: JSON.stringify(token),
         headers,
       });
 
@@ -17,7 +17,6 @@ export const usePostHook = () => {
       }
 
       const data = await response.json();
-      console.log(body);
       return data;
     } catch (e) {
       throw e;
