@@ -57,4 +57,3 @@ const movieFiltersSlice = createSlice({
 });
 
 export const movieFilterReducer = movieFiltersSlice.reducer;
-// export const { setPage } = mainMovieSlice.actions;

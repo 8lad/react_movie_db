@@ -10,12 +10,13 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { fetchMovies } from "../../store";
 import { searchUrl } from "../../utils/searchUrl";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const SearchBar = () => {
   const navigate = useNavigate();
   const [searchedMovie, setSearchedMovie] = useState("");
   const dispatch = useDispatch();
+  const { isLogged } = useSelector((state) => state.user);
   return (
     <Box sx={{ display: "flex", mr: "30px" }}>
       <Search>
@@ -36,7 +37,7 @@ const SearchBar = () => {
         variant="contained"
         color="success"
         onClick={() => {
-          if (searchedMovie && searchedMovie.length > 2) {
+          if (isLogged && searchedMovie && searchedMovie.length > 2) {
             dispatch(fetchMovies(searchUrl(String(searchedMovie))));
             setSearchedMovie("");
             navigate("/movies");

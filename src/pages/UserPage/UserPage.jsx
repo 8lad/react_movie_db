@@ -16,10 +16,10 @@ const UserPage = () => {
 
   useEffect(() => {
     const localToken = JSON.parse(localStorage.getItem("token"));
-    const test = { ...localToken };
+    const token = { ...localToken };
     if (localStorage.getItem("token")) {
       dispatch(setIsLogged(true));
-      dispatch(fetchSessionId(test));
+      dispatch(fetchSessionId(token));
     }
   }, [dispatch]);
 
