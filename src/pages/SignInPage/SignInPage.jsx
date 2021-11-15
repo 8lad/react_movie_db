@@ -57,7 +57,7 @@ const SignInPage = () => {
       password: "",
       confirmPassword: "",
       userName: "",
-      date: "",
+      date: "2000-01-01",
       gender: "",
     },
     onSubmit: (values) => {

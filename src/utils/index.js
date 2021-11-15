@@ -5,3 +5,5 @@ export * from "./censureship";
 export * from "./singleMovieUrl";
 export * from "./addFavoriteMovie";
 export * from "./removeFavoriteMovie";
+export * from "./getSessionId";
+export * from "./getUserDetails";

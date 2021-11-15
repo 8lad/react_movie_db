@@ -4,17 +4,16 @@ import {
   mainMoviesReducer,
   movieFilterReducer,
   singleMoviesReducer,
+  userDataReducer,
 } from "./reducers";
 
-import { createBrowserHistory } from "history";
-export const history = createBrowserHistory();
-
-export const rootReducer = (history) =>
+export const rootReducer = () =>
   combineReducers({
     theme: themeReducer,
     main: mainMoviesReducer,
     filters: movieFilterReducer,
     single: singleMoviesReducer,
+    user: userDataReducer,
   });
 
-export default rootReducer(history);
+export default rootReducer();

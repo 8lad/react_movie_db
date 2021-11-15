@@ -1,11 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Page404 from "./pages/Page404/Page404";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import SignInPage from "./pages/SignInPage/SignInPage";
-import SingleMovie from "./pages/SingleMovie/SingleMovie";
-import RatedMovies from "./pages/RatedMovies/RatedMovies";
-import FavoriteMovies from "./pages/FavoriteMovies/FavoriteMovies";
+import { BrowserRouter as Router } from "react-router-dom";
+import RoutesList from "./routes/RoutesList";
 import Header from "./components/Header/Header";
 import "./App.scss";
 import MainContainer from "./components/MainContainer/MainContainer";
@@ -21,16 +16,7 @@ function App() {
           <Router>
             <MainContainer>
               <Header />
-              <Routes>
-                <Route exact path="/" />
-                <Route path="/signin" element={<SignInPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/favorites" element={<FavoriteMovies />} />
-                <Route path="/userpage" />
-                <Route path="/moviepage" element={<SingleMovie />} />
-                <Route path="/movies" element={<RatedMovies />} />
-                <Route path="*" element={<Page404 />} />
-              </Routes>
+              <RoutesList />
             </MainContainer>
           </Router>
         </Theme>

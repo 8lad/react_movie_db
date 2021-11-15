@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "../../components/Form/Form";
 import Typography from "@material-ui/core/Typography";
-import { useNavigate } from "react-router-dom";
 import MainButton from "../../components/UI/MainButton/MainButton";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import CustomInput from "../../components/UI/CustomInput/CustomInput";
 import { Container } from "@mui/material";
+import { setIsLogged } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchUserToken } from "../../store";
+import { tokenRequest, redirectProfile } from "../../variables";
 
 const schema = yup.object().shape({
   password: yup
@@ -27,18 +31,26 @@ const schema = yup.object().shape({
 
 const LogInPage = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       password: "",
       userName: "",
     },
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values));
+    onSubmit: () => {
+      dispatch(setIsLogged());
+      if (userToken.request_token) {
+        localStorage.setItem("token", JSON.stringify(userToken));
+        return (window.location.href = `https://www.themoviedb.org/authenticate/${userToken.request_token}?redirect_to=${redirectProfile}`);
+      }
+      navigate("/userpage");
     },
     validationSchema: schema,
   });
-
+  const { userToken } = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(fetchUserToken(tokenRequest));
+  }, [dispatch]);
   return (
     <>
       <Typography component="h2" variant="h2">
@@ -70,16 +82,8 @@ const LogInPage = () => {
             fullWidth
           />
 
-          <MainButton>Sign In</MainButton>
+          <MainButton>Log In</MainButton>
         </Form>
-        <MainButton
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/");
-          }}
-        >
-          Go back
-        </MainButton>
       </Container>
     </>
   );

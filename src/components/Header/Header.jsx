@@ -10,27 +10,39 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch } from "react-redux";
 import { fetchMovies } from "../../store";
 import { createUrl } from "../../utils";
+import { useSelector } from "react-redux";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isLogged } = useSelector((state) => state.user);
   return (
     <AppBar>
-      <Toolbar>
+      <Toolbar sx={{ flexWrap: "wrap" }}>
         <Typography sx={{ flex: "1", textAlign: "left" }}>MOVIES DB</Typography>
         <SearchBar />
+
         <Button
           onClick={() => {
-            navigate("/movies");
+            navigate(isLogged ? "/movies" : "/");
             dispatch(fetchMovies(createUrl(1)));
           }}
           color="inherit"
         >
           Movies
         </Button>
-        <Button onClick={() => navigate("/favorites")} color="inherit">
+        <Button
+          onClick={() => navigate(isLogged ? "/favorites" : "/")}
+          color="inherit"
+        >
           Favorites
         </Button>
-        <Button onClick={() => navigate("/login")} color="inherit">
+        <Button
+          onClick={() => navigate(isLogged ? "/userpage" : "/")}
+          color="inherit"
+        >
+          Profile
+        </Button>
+        <Button onClick={() => navigate("/")} color="inherit">
           Log in
         </Button>
         <Button onClick={() => navigate("/signin")} color="inherit">

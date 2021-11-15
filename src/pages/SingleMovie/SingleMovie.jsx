@@ -104,14 +104,21 @@ const SingleMovie = () => {
                             </Box>
                           ))}
                         </Typography>
-
-                        <Typography variant="h6">Budget: {budget}$</Typography>
+                        {budget ? (
+                          <Typography variant="h6">
+                            Budget: {budget}$
+                          </Typography>
+                        ) : null}
                       </Box>
                       <RaitingCircle value={raiting} />
-                      <Typography variant="h5" component="h5">
-                        Slogan:
-                      </Typography>
-                      <Typography paragraph>{tagline}</Typography>
+                      {tagline ? (
+                        <>
+                          <Typography variant="h5" component="h5">
+                            Slogan:
+                          </Typography>
+                          <Typography paragraph>{tagline}</Typography>{" "}
+                        </>
+                      ) : null}
                       <Typography variant="h5" component="h5">
                         Description:
                       </Typography>
