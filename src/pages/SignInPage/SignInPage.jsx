@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import CustomInput from "../../components/UI/CustomInput/CustomInput";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
-import { Container } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import Confetti from "react-confetti";
 
 const schema = yup.object().shape({
@@ -72,12 +72,12 @@ const SignInPage = () => {
         Sign in
       </Typography>
       {isSubmit ? (
-        <>
-          <Confetti />
+        <Box sx={{ width: "100%", overflowX: "hidden" }}>
           <Typography component="h4" variant="h4" sx={{ marginTop: "30px" }}>
             Congratulations, you've passed the test with form validation
           </Typography>
-        </>
+          <Confetti />
+        </Box>
       ) : null}
       <Container maxWidth="sm" sx={{ pt: "20px" }}>
         <Form onSubmit={formik.handleSubmit}>
