@@ -1,5 +1,5 @@
 import FavoriteMovies from "../pages/FavoriteMovies/FavoriteMovies";
-import LogInPage from "../pages/LogInPage/LogInPage";
+import LogInPage from "../pages/LoginPage/LoginPage";
 import Page404 from "../pages/Page404/Page404";
 import RatedMovies from "../pages/RatedMovies/RatedMovies";
 import SignInPage from "../pages/SignInPage/SignInPage";
