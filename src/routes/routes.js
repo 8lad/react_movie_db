@@ -1,5 +1,5 @@
 import FavoriteMovies from "../pages/FavoriteMovies/FavoriteMovies";
-import LoginPage from "../pages/LogInPage/LogInPage";
+import LogInPage from "../pages/LogInPage/LogInPage";
 import Page404 from "../pages/Page404/Page404";
 import RatedMovies from "../pages/RatedMovies/RatedMovies";
 import SignInPage from "../pages/SignInPage/SignInPage";
@@ -13,5 +13,5 @@ export const routes = [
   { path: "/favorites", component: FavoriteMovies, isPrivate: true },
   { path: "*", component: Page404 },
   { path: "/signin", component: SignInPage },
-  { path: "/", component: LoginPage },
+  { path: "/", component: LogInPage },
 ];
